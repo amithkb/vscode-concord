@@ -322,8 +322,15 @@ import {
   
   
   documents.onDidChangeContent((change) => {
-      runAdditionalValidators(change.document);
-  });
+    runAdditionalValidators(change.document);
+});
+documents.onDidOpen((change)=>{
+  runAdditionalValidators(change.document);
+})
+documents.onDidSave((change)=>{
+  runAdditionalValidators(change.document);
+})
+
   
   
   function runAdditionalValidators(document: TextDocument): Diagnostic[] {
