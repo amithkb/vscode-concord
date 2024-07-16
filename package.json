@@ -1,8 +1,8 @@
 {
   "name": "Concord",
   "description": "Concord VSCode Extension",
-  "author": "REPLACE_ME",
-  "license": "MIT",
+  "author": "Nikhil Wadhera",
+  "license": "Apache-2.0",
   "version": "1.0.0",
   "publisher": "concord",
   "categories": [],

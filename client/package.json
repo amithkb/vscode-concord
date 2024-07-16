@@ -1,13 +1,13 @@
 {
-  "name": "REPLACE_ME",
-  "description": "REPLACE_ME",
-  "author": "REPLACE_ME",
-  "license": "MIT",
-  "version": "0.0.1",
-  "publisher": "REPLACE_ME",
+  "name": "Concord",
+  "description": "Concord VSCode Extension",
+  "author": "Nikhil Wadhera",
+  "license": "Apache-2.0",
+  "version": "1.0.0",
+  "publisher": "concord",
   "repository": {
     "type": "git",
-    "url": "REPLACE_ME"
+    "url": "https://github.com/amithkb/vscode-concord.git"
   },
   "engines": {
     "vscode": "^1.75.0"

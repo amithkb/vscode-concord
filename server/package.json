@@ -2,14 +2,14 @@
   "name": "Concord",
   "description": "concord vscode extension",
   "version": "1.0.0",
-  "author": "REPLACE_ME",
+  "author": "Nikhil Wadhera",
   "license": "Apache-2.0",
   "engines": {
     "node": "*"
   },
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/amithkb/vscode-concord.git"
   },
   "dependencies": {
     "vscode-languageserver": "^8.1.0",
