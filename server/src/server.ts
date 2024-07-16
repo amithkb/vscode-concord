@@ -37,6 +37,12 @@ import {
       if (!textDocument) {
           return [];
       }
+      const path = textDocument?.uri.split('/');
+      let currentFilePath = "";
+      for (let index = 2; index <= path.length - 1; index++) {
+          if(index==path.length-1) currentFilePath += path[index];
+          else currentFilePath += path[index] + '/';
+      }
       const position = params.position;
       const line = textDocument.getText({
           start: {line: position.line, character: 0},
@@ -122,7 +128,7 @@ import {
               });
           });
           files.forEach((file: any) => {
-              if (String(file).endsWith('concord.yml')) {
+              if (file != currentFilePath && String(file).endsWith('concord.yml')) {
                   const filePath = file;
                   try {
                       const fileContent = fs.readFileSync(filePath, 'utf-8');
@@ -322,15 +328,14 @@ import {
   
   
   documents.onDidChangeContent((change) => {
+      runAdditionalValidators(change.document);
+  });
+  documents.onDidOpen((change)=>{
     runAdditionalValidators(change.document);
-});
-documents.onDidOpen((change)=>{
-  runAdditionalValidators(change.document);
-})
-documents.onDidSave((change)=>{
-  runAdditionalValidators(change.document);
-})
-
+  })
+  documents.onDidSave((change)=>{
+    runAdditionalValidators(change.document);
+  })
   
   
   function runAdditionalValidators(document: TextDocument): Diagnostic[] {
@@ -339,6 +344,11 @@ documents.onDidSave((change)=>{
       const loaded: any = yaml.load(document.getText(), {listener: map.listen(), json: true});
       
       const path = document?.uri.split('/');
+      let currentFilePath = "";
+      for (let index = 2; index <= path.length - 1; index++) {
+          if(index==path.length-1) currentFilePath += path[index];
+          else currentFilePath += path[index] + '/';
+      }
       let files: Array<string> = [];
       let folderPath: any = '';
       let mainConcordFile = '';
@@ -427,7 +437,7 @@ documents.onDidSave((change)=>{
   
                   if(!loaded.flows[flowName]){
                       files.forEach((file: any) => {
-                          if (String(file).endsWith('concord.yml')) {
+                          if (file != currentFilePath && String(file).endsWith('concord.yml')) {
                               const filePath = file;
                               try {
                                   const fileContent = fs.readFileSync(filePath, 'utf-8');
