@@ -54,15 +54,19 @@ connection.onCompletion((params) => {
                 mainConcordFile += path[index] + '/';
             }
             const getFilesRecursively = (directory: any): any => {
-                const filesInDirectory = fs.readdirSync(directory);
-                for (const file of filesInDirectory) {
-                    let absolute = directory + file;
-                    if (fs.statSync(absolute).isDirectory()) {
-                        absolute = absolute + '/';
-                        getFilesRecursively(absolute);
-                    } else {
-                        files.push(absolute);
+                try{
+                    const filesInDirectory = fs.readdirSync(directory);
+                    for (const file of filesInDirectory) {
+                        let absolute = directory + file;
+                        if (fs.statSync(absolute).isDirectory()) {
+                            absolute = absolute + '/';
+                            getFilesRecursively(absolute);
+                        } else {
+                            files.push(absolute);
+                        }
                     }
+                } catch(err){
+                    console.error(err);
                 }
             };
             getFilesRecursively(folderPath);
@@ -83,15 +87,19 @@ connection.onCompletion((params) => {
                 }
                 concordFolderPath += 'concord/';
                 const getFilesRecursively = (directory: any): any => {
-                    const filesInDirectory = fs.readdirSync(directory);
-                    for (const file of filesInDirectory) {
-                        let absolute = directory + file;
-                        if (fs.statSync(absolute).isDirectory()) {
-                            absolute = absolute + '/';
-                            getFilesRecursively(absolute);
-                        } else {
-                            files.push(absolute);
+                    try{
+                        const filesInDirectory = fs.readdirSync(directory);
+                        for (const file of filesInDirectory) {
+                            let absolute = directory + file;
+                            if (fs.statSync(absolute).isDirectory()) {
+                                absolute = absolute + '/';
+                                getFilesRecursively(absolute);
+                            } else {
+                                files.push(absolute);
+                            }
                         }
+                    } catch(err){
+                        console.error(err);
                     }
                 };
                 getFilesRecursively(concordFolderPath);
@@ -196,15 +204,19 @@ connection.onDefinition((params) => {
                 mainConcordFile += path[index] + '/';
             }
             const getFilesRecursively = (directory: any) => {
-                const filesInDirectory = fs.readdirSync(directory);
-                for (const file of filesInDirectory) {
-                    let absolute = directory + file;
-                    if (fs.statSync(absolute).isDirectory()) {
-                        absolute = absolute + '/';
-                        getFilesRecursively(absolute);
-                    } else {
-                        files.push(absolute);
+                try{
+                    const filesInDirectory = fs.readdirSync(directory);
+                    for (const file of filesInDirectory) {
+                        let absolute = directory + file;
+                        if (fs.statSync(absolute).isDirectory()) {
+                            absolute = absolute + '/';
+                            getFilesRecursively(absolute);
+                        } else {
+                            files.push(absolute);
+                        }
                     }
+                } catch(err){
+                    console.error(err);
                 }
             };
             getFilesRecursively(folderPath);
@@ -226,15 +238,19 @@ connection.onDefinition((params) => {
                 }
                 concordFolderPath += 'concord/';
                 const getFilesRecursively = (directory: any): any => {
-                    const filesInDirectory = fs.readdirSync(directory);
-                    for (const file of filesInDirectory) {
-                        let absolute = directory + file;
-                        if (fs.statSync(absolute).isDirectory()) {
-                            absolute = absolute + '/';
-                            getFilesRecursively(absolute);
-                        } else {
-                            files.push(absolute);
+                    try{
+                        const filesInDirectory = fs.readdirSync(directory);
+                        for (const file of filesInDirectory) {
+                            let absolute = directory + file;
+                            if (fs.statSync(absolute).isDirectory()) {
+                                absolute = absolute + '/';
+                                getFilesRecursively(absolute);
+                            } else {
+                                files.push(absolute);
+                            }
                         }
+                    } catch(err){
+                        console.error(err);
                     }
                 };
                 getFilesRecursively(concordFolderPath);
@@ -308,15 +324,19 @@ function runAdditionalValidators(document: TextDocument): Diagnostic[] {
             mainConcordFile += path[index] + '/';
         }
         const getFilesRecursively = (directory: any): any => {
-            const filesInDirectory = fs.readdirSync(directory);
-            for (const file of filesInDirectory) {
-                let absolute = directory + file;
-                if (fs.statSync(absolute).isDirectory()) {
-                    absolute = absolute + '/';
-                    getFilesRecursively(absolute);
-                } else {
-                    files.push(absolute);
+            try{
+                const filesInDirectory = fs.readdirSync(directory);
+                for (const file of filesInDirectory) {
+                    let absolute = directory + file;
+                    if (fs.statSync(absolute).isDirectory()) {
+                        absolute = absolute + '/';
+                        getFilesRecursively(absolute);
+                    } else {
+                        files.push(absolute);
+                    }
                 }
+            } catch(err){
+                console.error(err);
             }
         };
         getFilesRecursively(folderPath);
@@ -337,15 +357,19 @@ function runAdditionalValidators(document: TextDocument): Diagnostic[] {
             }
             concordFolderPath += 'concord/';
             const getFilesRecursively = (directory: any): any => {
-                const filesInDirectory = fs.readdirSync(directory);
-                for (const file of filesInDirectory) {
-                    let absolute = directory + file;
-                    if (fs.statSync(absolute).isDirectory()) {
-                        absolute = absolute + '/';
-                        getFilesRecursively(absolute);
-                    } else {
-                        files.push(absolute);
+                try{
+                    const filesInDirectory = fs.readdirSync(directory);
+                    for (const file of filesInDirectory) {
+                        let absolute = directory + file;
+                        if (fs.statSync(absolute).isDirectory()) {
+                            absolute = absolute + '/';
+                            getFilesRecursively(absolute);
+                        } else {
+                            files.push(absolute);
+                        }
                     }
+                } catch(err){
+                    console.error(err);
                 }
             };
             getFilesRecursively(concordFolderPath);
